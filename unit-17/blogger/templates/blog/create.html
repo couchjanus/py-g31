@@ -1,0 +1,13 @@
+<!-- /templates/blog/create.html -->
+{% extends 'base.html' %}
+{% block header %}<h1>{% block title %}New Post{% endblock %}</h1>{% endblock %}
+{% block content %}
+<div class="row">
+<form method="post">
+<div class="col"><label for="title">Title</label><input name="title" class="form-control" id="title" value="{{ request.form['title'] }}" required></div>
+<div class="col"><label for="body">Body</label><textarea name="body" class="form-control" id="body">{{ request.form['body'] }}</textarea></div>
+
+<input type="submit" class="form-control btn btn-primary btn-lg" value="Save">
+</form>
+</div>
+{% endblock %}

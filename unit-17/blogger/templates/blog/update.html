@@ -1,0 +1,15 @@
+
+<!-- templates/blog/update.html -->
+{% extends 'base.html' %}
+{% block header %}<h1>Edit "{{ post['title'] }}"</h1>{% endblock %}
+{% block content %}
+<div class="row">
+<form method="post">
+<div class="col"><label for="title">Title</label><input name="title" class="form-control" id="title" value="{{ request.form['title'] or post['title'] }}" required></div>
+<div class="col"><label for="body">Body</label><textarea name="body" class="form-control" id="body">{{ request.form['body'] or post['body'] }}</textarea></div>
+<input type="submit" class="form-control btn btn-primary btn-lg" value="Update">
+</form><hr>
+<form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+    <input class="btn btn-danger"" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+</form></div>
+{% endblock %}
