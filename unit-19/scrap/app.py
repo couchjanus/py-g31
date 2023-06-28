@@ -25,10 +25,10 @@ class App:
         
         self.page_content = requests.get(URL).content
 
-        dlogger.debug('Creating AllBooksPage from page content.')
+        # dlogger.debug('Creating AllBooksPage from page content.')
         self.page = Pages(self.page_content)
 
-        logger.info(f'Going through {self.page.page_count} pages of books...')
+        # logger.info(f'Going through {self.page.page_count} pages of books...')
 
         self._books = self.books()
 
@@ -40,7 +40,7 @@ class App:
         return self.page.page_count
 
     def books(self):
-        dlogger.debug(f'Finding all books')
+        # dlogger.debug(f'Finding all books')
         books = []
 
         for page_num in range(self.page.page_count):
@@ -48,10 +48,10 @@ class App:
             page_start = time.time()
             
             url = f'{URL}/catalogue/page-{page_num+1}.html'
-            logger.info(f'Requesting {url}')
+            # logger.info(f'Requesting {url}')
 
             page_content = requests.get(url).content
-            logger.debug('Creating All Pages from page content.')
+            # logger.debug('Creating All Pages from page content.')
             
             page = Pages(page_content)
             # print(f'{url} took {time.time() - page_start}')

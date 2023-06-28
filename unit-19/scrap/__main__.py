@@ -6,6 +6,10 @@ import logging.config
 from scrap import __app_name__, USER_CHOICE, LOGGING_CONFIG
 
 from scrap.app import App
+import sys
+
+sys.stdin.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding='utf-8')
 
 # create logger
 logging.config.fileConfig(LOGGING_CONFIG)
@@ -13,10 +17,6 @@ logging.config.fileConfig(LOGGING_CONFIG)
 logger = logging.getLogger('devel')
 
 def print_best_books(app):
-    logger.debug('Finding best books by rating...')
-    # print(app.get_content())
-    # print(app.books())
-
     for book in app.best_books():
         print(book)
 
@@ -49,7 +49,7 @@ def main():
             user_choices[user_input](book_app)
         else:
             print('Please choose a valid command.')
-    user_input = input(USER_CHOICE)
+        user_input = input(USER_CHOICE)
     
 logger.debug('Terminating program...')
 

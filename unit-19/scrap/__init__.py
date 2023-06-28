@@ -1,9 +1,13 @@
 # __init__.py
 from pathlib import Path
+import sys
 
 __app_name__ = "scrap"
 __version__ = "0.1.0"
 
+
+sys.stdin.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding='utf-8')
 
 LOGGING_CONFIG = Path(__file__).parent / 'logging.conf'
 
